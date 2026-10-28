@@ -1,10 +1,25 @@
-## Running the Application
+# Mobile Video Playback Reproduction
 
-1. `npm install`
-2. `npm start`
-3. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A minimal React Player example for investigating video play/pause behavior on mobile with Heap analytics loaded. It renders one full-viewport video with native controls.
 
-To recreate issue
+## Run locally
 
-- start app, resize browser to mobile (issue does not happen on desktop)
-- click near the play button, playing and pausing the video a couple times
+```sh
+npm ci
+npm start
+```
+
+Open [localhost:3000](http://localhost:3000). This reproducer retains React 18, React Player 2, and Create React App 5 so changes to those dependencies do not silently change the case being investigated.
+
+## Reproduce
+
+1. In `public/index.html`, replace `YOUR_APP_ID` with a Heap application ID if testing the analytics integration.
+2. Open the app on a phone or use a mobile viewport in browser developer tools.
+3. Tap near the native play button, then alternate play and pause several times.
+4. Compare the result with the Heap loader removed to isolate the integration.
+
+The original report observed the issue in a mobile viewport rather than desktop. Device autoplay policies may require a user gesture before playback. The MP4 is hosted externally and is not included in this repository.
+
+## Scope
+
+This is a bug reproduction, not a complete video application. `npm run build` creates a production build; no automated playback tests are included. Native controls and analytics behavior require a manual browser/device check.
