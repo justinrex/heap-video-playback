@@ -1,0 +1,3 @@
+html, body, #root { margin: 0; width: 100%; min-height: 100%; }
+body { background: #000; color: #fff; font-family: system-ui, sans-serif; }
+[role="alert"] { position: fixed; inset: auto 1rem 1rem; margin: 0; padding: 1rem; background: #242424; border: 1px solid #aaa; }
